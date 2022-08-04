@@ -144,13 +144,14 @@ class BMP180
   int32_t getPressure(void);                               //in Pa
   float   getTemperature(void);                            //in °C
   int32_t getSeaLevelPressure(int16_t trueAltitude = 115); //in Pa, by default true altitude id 115 meters
+  float   getAltitude(float sealevelPressure = 101325); // std atmosphere  
   void    softReset(void);
   uint8_t readFirmwareVersion(void);
   uint8_t readDeviceID(void);
 
 
  private:
-  BMP180_CAL_COEFF _calCoeff;
+  BMP180_CAL_COEFF _calCoeff;  
 
   uint8_t  _resolution;
 

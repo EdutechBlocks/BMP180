@@ -183,6 +183,15 @@ int32_t BMP180::getSeaLevelPressure(int16_t trueAltitude)
   if (pressure == BMP180_ERROR) return BMP180_ERROR;
                                 return (pressure / pow(1.0 - (float)trueAltitude / 44330, 5.255));
 }
+float BMP180::getAltitude(float sealevelPressure) {
+    float altitude;
+
+    float pressure = getPressure();
+
+    altitude = 44330 * (1.0 - pow(pressure / sealevelPressure, 0.1903));
+
+    return altitude;
+}
 
 /**************************************************************************/
 /*
